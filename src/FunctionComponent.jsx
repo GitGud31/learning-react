@@ -1,21 +1,20 @@
-import React, { useContext } from "react";
-import { ThemeContext } from "./App";
+import React from "react";
+import { useTheme } from "./ThemeProvider";
 
 
 export function FunctionComponent() {
 
-    const darkTheme = useContext(ThemeContext);
+    /* Consume the custom hook value (darkTheme) */
+    const theme = useTheme();
 
-    const themeStyles = (dark) => {
-        return {
-            backgroundColor: dark ? '#333' : '#ccc',
-            color: dark ? '#ccc' : '#333',
-            padding: '2rem',
-            margin: '2rem',
-        };
+    const themeStyles = {
+        backgroundColor: theme ? '#333' : '#ccc',
+        color: theme ? '#ccc' : '#333',
+        padding: '2rem',
+        margin: '2rem',
     }
 
     return (
-        <div style={themeStyles(darkTheme)}> Function Component</div>
+        <div style={themeStyles}> Function Component</div>
     );
 }
